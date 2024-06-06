@@ -4,6 +4,8 @@ app = Flask(__name__)
 
 @app.route('/result',methods=['POST'])
 def getresult():
+    #hello
+
     data = request.get_json()
     gender = data.get('gender')
     age = data.get('age')
