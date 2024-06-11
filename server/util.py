@@ -2,6 +2,7 @@ import json
 import pickle
 import numpy as np
 import warnings
+from sklearn.preprocessing import  StandardScaler
 warnings.filterwarnings('ignore')
 
 __model = None
@@ -17,7 +18,9 @@ def get_result(gender, age, hypertension, heart_disease, smoking_history, bmi, H
     x[5] = bmi
     x[6] = HbA1c_level
     x[7] = blood_glucose_level
-    return __model.predict([x])[0]
+    sc = StandardScaler()
+    s=sc.fit_transform([x])
+    return __model.predict(s)[0]
 
 def load_saved_artifacts():
     global __model
