@@ -18,9 +18,8 @@ def get_result(gender, age, hypertension, heart_disease, smoking_history, bmi, H
     x[5] = bmi
     x[6] = HbA1c_level
     x[7] = blood_glucose_level
-    sc = StandardScaler()
-    s=sc.fit_transform([x])
-    return __model.predict(s)[0]
+
+    return __model.predict([x])[0]
 
 def load_saved_artifacts():
     global __model
