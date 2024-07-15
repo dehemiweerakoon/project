@@ -4,9 +4,6 @@ app = Flask(__name__)
 
 @app.route('/result',methods=['POST'])
 def getresult():
-    # 'female' -> 0
-    # 'male' -> 1
-
     # current ->0
     # non-smoker-->1
     # past-smoker-->2
