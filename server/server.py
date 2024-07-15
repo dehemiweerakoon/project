@@ -38,7 +38,7 @@ def getresult():
         risk_score += 1
 
     # Smoking history factor
-    if smoking_history:
+    if smoking_history == 2 | smoking_history==0:
         risk_score += 1
 
     # HbA1c level factor
