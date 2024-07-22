@@ -70,9 +70,12 @@ def getresult():
         'result': result.item(),
         'statement': name
     }
-
+    if(result.item()==1):
+        ispositive ="Positive"
+    else:
+        ispositive ="Negative"
     response = jsonify({
-        'result':result.item(),
+        'result':ispositive,
         'statement':name
     })
     response.headers.add("Access-Control-Allow-Origin", '*')
