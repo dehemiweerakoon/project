@@ -1,6 +1,8 @@
 from flask import  Flask,request,jsonify
+from flask_cors import CORS
 import  util
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/result',methods=['POST'])
 def getresult():
@@ -64,13 +66,17 @@ def getresult():
     if result.item() ==1:
         name ="Cut down on free sugar wapping sugary drinks, energy drinks and fruit juices with water, plain milk, or tea and coffee without sugar can be a good start. Cutting out free sugars can help you manage your blood glucose levels and help you manage your weight."
 
+    store_result = {  # Update global variable
+        'result': result.item(),
+        'statement': name
+    }
+
     response = jsonify({
         'result':result.item(),
         'statement':name
     })
     response.headers.add("Access-Control-Allow-Origin", '*')
     return response
-
 
 
 if __name__ == "__main__":
