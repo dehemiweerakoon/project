@@ -1,8 +1,11 @@
 from flask import  Flask,request,jsonify
 from flask_cors import CORS
+from waitress import  serve
 import  util
 app = Flask(__name__)
 CORS(app)
+import logging
+
 
 @app.route('/result',methods=['POST'])
 def getresult():
@@ -80,7 +83,7 @@ def getresult():
     })
     response.headers.add("Access-Control-Allow-Origin", '*')
     return response
-
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 if __name__ == "__main__":
-    app.run()
+    serve(app, host='127.0.0.1', port=8085, threads=2)
